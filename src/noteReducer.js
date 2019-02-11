@@ -21,7 +21,16 @@ export function noteReducer(state = initialNoteState, action) {
         ]
       };
     case UPDATE_NOTE:
+      return state.notes.map(note => 
+        note.id === action.id
+          ? {
+            ...note,
+            text: action.text,
+          }
+          : note
+      );
     case DELETE_NOTE:
+      return state.notes.filter(note => note.id !== action.id);
     default:
       return state;
   }
