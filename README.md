@@ -1,3 +1,17 @@
+
+## Project Specifications
+
+You should be able to:
+
+1. Add a note
+2. Edit a note
+3. Delete a note
+
+Also make sure that:
+
+1. Each note should look like a colored rectangular box
+2. Boxes can be colored in different colors, selected from a fixed list of colors
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
