@@ -29,14 +29,18 @@ function App() {
 
   return (
     <div className="App">
+      <label htmlFor="noteInput">Note text</label>
       <NoteInput 
         value={inputText}
+        id="noteInput"
         name="noteInput"
         onChange={({ target: { value } }) => setInputText(value)}
         placeholder="Enter a new note" />
       <AddButton text="Add note" onClick={handleAdd} />
-      <ColorPicker 
+      <label htmlFor="colorPicker">Note Color</label>
+      <ColorPicker
         value={userColor.id} 
+        id="colorPicker"
         colors={colors} 
         onChange={({ target: { value } }) => setColor(colors.find(({ id }) => id === value))} />
       {state.notes.map(note =>
