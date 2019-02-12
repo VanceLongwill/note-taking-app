@@ -19,8 +19,8 @@ export function NoteCard({ note, onDelete, onEdit, ...props }) {
       <div className="NoteCard-header">
         <span style={{ color }}>{title}</span>
         <div className="NoteCard-header-icons">
-          <button onClick={() => onDelete(id)}><FaTrash /></button>
           <button onClick={() => onEdit(note)}><FaPen /></button>
+          <button onClick={() => onDelete(id)}><FaTrash /></button>
         </div>
       </div>
       <div className="NoteCard-body">

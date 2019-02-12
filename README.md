@@ -1,3 +1,4 @@
+## [Click here for the demo](https://vancelongwill.github.io/note-taking-app/)
 
 ## Project Specifications
 
