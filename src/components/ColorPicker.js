@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 
 export function ColorPicker({ selected, colors, onChange, ...props }) {
   const [isExpanded, toggleDropdown] = useState(false);
@@ -9,7 +10,11 @@ export function ColorPicker({ selected, colors, onChange, ...props }) {
           <div className="ColorPicker-option" onClick={() => onChange(color)} key={color.id} value={color}>
             {color.name}
           </div>)
-        : selected
+        : <span>{selected}</span>
+      }
+      {isExpanded
+          ? <FaCaretUp />
+          : <FaCaretDown />
       }
     </div>
   )

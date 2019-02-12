@@ -16,6 +16,7 @@ export function noteReducer(state = initialNoteState, action) {
           title: `Note ${state.length + 1}`,
           text: action.text,
           id: uuid(),
+          date: Math.floor(Date.now() / 1000),
         }
       ];
     case UPDATE_NOTE:
@@ -39,15 +40,18 @@ export const initialNoteState = [
     title: "Note 1",
     text: "this is an example note",
     id: uuid(),
+    date: Math.floor(Date.now() / 1000),
   },
   {
     title: "Note 2",
     text: "this is another example note",
     id: uuid(),
+    date: Math.floor(Date.now() / 1000),
   },
   {
     title: "Note 3",
     text: "this is a third example note",
     id: uuid(),
+    date: Math.floor(Date.now() / 1000),
   },
 ];
