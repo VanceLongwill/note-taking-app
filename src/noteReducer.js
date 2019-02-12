@@ -28,6 +28,7 @@ export function noteReducer(state = initialNoteState, action) {
           ? {
             ...note,
             text: action.text,
+            date: Math.floor(Date.now() / 1000),
           }
           : note
       );
