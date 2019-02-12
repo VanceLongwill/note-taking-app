@@ -6,9 +6,11 @@ export function NoteCard({ note, onDelete, onEdit, ...props }) {
   return (
     <div className="NoteCard">
       <div className="NoteCard-header">
-        <button onClick={() => onDelete(note.id)}>Delete</button>
-        <button onClick={() => onEdit(note)}>Edit</button>
-        <h3>{title}</h3>
+        <span>{title}</span>
+        <div className="NoteCard-header-icons">
+          <button onClick={() => onDelete(note.id)}>Delete</button>
+          <button onClick={() => onEdit(note)}>Edit</button>
+        </div>
       </div>
       <div className="NoteCard-body">
         <p>{text}</p>

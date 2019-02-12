@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from 'react';
-import './App.css';
 
 import { noteReducer, actionTypes, initialNoteState } from './noteReducer';
 import { colors } from './colors';
@@ -19,6 +18,7 @@ function App() {
   const { CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE } = actionTypes;
   function handleAdd() {
     dispatch({ type: CREATE_NOTE, text: inputText });
+    setInputText("");
   }
 
   function handleDelete(id) {
@@ -39,32 +39,36 @@ function App() {
 
   return (
     <div className="App">
-      {modalState.visible &&
-          <EditModal 
-            onClose={handleModalClose}
-            onSave={handleUpdate}
-            note={modalState.note} />}
-      <label htmlFor="noteInput">Note text</label>
-      <NoteInput 
-        value={inputText}
-        id="noteInput"
-        name="noteInput"
-        onChange={({ target: { value } }) => setInputText(value)}
-        placeholder="Enter a new note" />
-      <AddButton text="Add note" onClick={handleAdd} />
-      <label htmlFor="colorPicker">Note Color</label>
-      <ColorPicker
-        value={userColor.id} 
-        id="colorPicker"
-        colors={colors} 
-        onChange={({ target: { value } }) => setColor(value)} />
-      {notes.map(note =>
-        <NoteCard 
-          note={note}
-          onDelete={handleDelete}
-          onEdit={handleModalOpen}
-          key={note.id} />
-      )}
+      <form className="InputContainer">
+        {modalState.visible &&
+            <EditModal 
+              onClose={handleModalClose}
+              onSave={handleUpdate}
+              note={modalState.note} />}
+        <label htmlFor="noteInput">Note text</label>
+        <NoteInput 
+          value={inputText}
+          id="noteInput"
+          name="noteInput"
+          onChange={({ target: { value } }) => setInputText(value)}
+          placeholder="Enter a new note" />
+        <label htmlFor="colorPicker">Note Color</label>
+        <ColorPicker
+          selected={userColor.name} 
+          id="colorPicker"
+          colors={colors} 
+          onChange={setColor} />
+        <AddButton disabled={!inputText.length} text="Add note" onClick={handleAdd} />
+      </form>
+      <div className="NoteContainer">
+        {notes.map(note =>
+          <NoteCard 
+            note={note}
+            onDelete={handleDelete}
+            onEdit={handleModalOpen}
+            key={note.id} />
+        )}
+      </div>
     </div>
   );
 }

@@ -1,3 +1,13 @@
+:root {
+  --white: #fefefe;
+  --grey: #a8a8a8;
+  --light-grey: #e0e2e1;
+  --fs-medium: 16px;
+  --fs-small: 12px;
+  --light-blue: #5bddf7;
+  --dark-blue: #00a5c6;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,15 +16,145 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: var(--fs-medium);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.App {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.InputContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.InputContainer > * {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.NoteInput {
+  font-size: var(--fs-medium);
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: 1px 2px 5px var(--grey);
+}
+
+.NoteInput input {
+  background-color: var(--light-grey);
+  border-radius: 2px;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid var(--grey);
+  height: 100%;
+  width: 100%;
+  font-size: var(--fs-medium);
+}
+
+.ColorPicker {
+  font-size: var(--fs-medium);
+  background-color: var(--light-grey);
+  border: 1px solid var(--grey);
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 1px 2px 5px var(--grey);
+}
+
+.ColorPicker-option {
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ColorPicker-option:last-of-type {
+  border: none;
+}
+
+.AddButton {
+  border: none;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--light-blue) 0%, var(--dark-blue) 100%);
+  padding: 10px 20px 10px 20px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 900;
+  box-shadow: 0px 1px 2px var(--grey);
+  text-shadow: 1px 0px 1px var(--grey);
+  align-self: center;
+}
+
+.AddButton:hover {
+  background: linear-gradient(to top, var(--light-blue) 0%, var(--dark-blue) 100%);
+}
+.AddButton:disabled {
+  background: var(--grey);
+}
+
+.NoteContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 .NoteCard {
-  border: 1px solid black;
+  padding: 10px;
+  border-radius: 2px;
+  background-color: var(--light-grey);
+  box-shadow: 1px 2px 5px var(--grey);
 }
+
+.NoteCard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.NoteCard-header > span {}
+.NoteCard-header-icons {};
 .NoteCard-body {}
 .NoteCard-footer {}
+
+.EditModal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  overflow: none;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.EditModal-content {
+  background-color: var(--white);
+  padding: 5vw;
+  margin: 15% auto;
+  width: 80%;
+}
+.EditModal-close {
+  position: fixed;
+  right: 0;
+  background: transparent;
+  border: 0;
+  font-weight: 900;
+  font-size: large;
+}
+
+.EditModal-close:hover {
+  color: var(--white);
+}
+
+label {
+  float: left;
+  font-size: var(--fs-small);
+  color: var(--grey);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input:required:invalid {
+  /* box-shadow: 1px 2px 5px red; */
+}
