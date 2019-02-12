@@ -17,7 +17,7 @@ function App() {
 
   const { CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE } = actionTypes;
   function handleAdd() {
-    dispatch({ type: CREATE_NOTE, text: inputText });
+    dispatch({ type: CREATE_NOTE, text: inputText, color: userColor });
     setInputText("");
   }
 
@@ -39,12 +39,12 @@ function App() {
 
   return (
     <div className="App">
+      {modalState.visible &&
+          <EditModal 
+            onClose={handleModalClose}
+            onSave={handleUpdate}
+            note={modalState.note} />}
       <form className="InputContainer">
-        {modalState.visible &&
-            <EditModal 
-              onClose={handleModalClose}
-              onSave={handleUpdate}
-              note={modalState.note} />}
         <label htmlFor="noteInput">Note text</label>
         <NoteInput 
           value={inputText}

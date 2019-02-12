@@ -12,12 +12,12 @@ function getFormattedDate(timestamp) {
 }
 
 export function NoteCard({ note, onDelete, onEdit, ...props }) {
-  const { id, title, text, color, date } = note;
+  const { id, title, text, color: { value: color }, date } = note;
 
   return (
     <div className="NoteCard" style={{ borderLeftColor: color }}>
       <div className="NoteCard-header">
-        <span>{title}</span>
+        <span style={{ color }}>{title}</span>
         <div className="NoteCard-header-icons">
           <button onClick={() => onDelete(id)}><FaTrash /></button>
           <button onClick={() => onEdit(note)}><FaPen /></button>

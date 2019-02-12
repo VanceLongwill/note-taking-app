@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { FaRegWindowClose } from 'react-icons/fa';
+
 import { NoteInput } from './NoteInput';
 import { AddButton } from './AddButton';
 
@@ -14,16 +16,25 @@ export function EditModal({ note, onSave, onClose, ...props }) {
 
   return (
     <div className="EditModal" onClick={onClose}>
-      <button type="button" className="EditModal-close" name="closeModal" onClick={onClose}>X</button>
       <div className="EditModal-content" onClick={e => e.stopPropagation()}>
+        <button type="button" className="EditModal-close" name="closeModal" onClick={onClose}><FaRegWindowClose /></button>
+        <span><b>Editing: </b>{note.title}</span>
         <NoteInput 
           value={inputText}
           id="modalNoteInput"
           name="modalNoteInput"
           onChange={({ target: { value } }) => setInputText(value)} />
-        <AddButton
-          text="Save changes"
-          onClick={() => onSave(note.id, inputText)} />
+        <div>
+          <AddButton
+            text="Save changes"
+            onClick={() => { 
+              onSave(note.id, inputText);
+              onClose();
+            }} />
+          <AddButton
+            text="Close"
+            onClick={onClose} />
+        </div>
       </div>
     </div>
   );
