@@ -7,6 +7,8 @@
   --fs-small: 12px;
   --light-blue: #3fb8ff;
   --dark-blue: #058eff;
+  --padding: 10px;
+  --shadow: 1px 2px 5px var(--grey);
 }
 
 body {
@@ -29,27 +31,27 @@ body {
 .InputContainer {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: calc(var(--padding) * 2);
   max-width: 80%;
   margin: 0 auto;
 }
 
 .InputContainer > * {
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: var(--padding);
+  margin-top: var(--padding);
 }
 
 .NoteInput {
   font-size: var(--fs-medium);
   width: 100%;
   border-radius: 2px;
-  box-shadow: 1px 2px 5px var(--grey);
+  box-shadow: var(--shadow);
 }
 
 .NoteInput input {
   background-color: var(--light-grey);
   border-radius: 2px;
-  padding: 10px;
+  padding: var(--padding);
   margin: 0;
   border: 1px solid var(--dark-grey);
   height: 100%;
@@ -63,8 +65,8 @@ body {
   border: 1px solid var(--dark-grey);
   border-radius: 2px;
   width: 100%;
-  padding: 10px;
-  box-shadow: 1px 2px 5px var(--grey);
+  padding: var(--padding);
+  box-shadow: var(--shadow);
 }
 .ColorPicker svg {
   position: relative;
@@ -84,7 +86,7 @@ body {
   border: none;
   border-radius: 2px;
   background: linear-gradient(to bottom, var(--light-blue) 0%, var(--dark-blue) 100%);
-  padding: 10px 20px 10px 20px;
+  padding: var(--padding) calc(var(--padding) * 2) var(--padding) calc(var(--padding) * 2);
   text-transform: uppercase;
   color: var(--white);
   box-shadow: 0px 1px 2px var(--grey);
@@ -102,13 +104,19 @@ body {
 .NoteContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-gap: var(--padding);
+}
+
+@media (max-width: 768px) {
+  .NoteContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .NoteCard {
   border-radius: 2px;
   background: linear-gradient(to bottom, var(--white) 0%, var(--grey) 100%);
-  box-shadow: 1px 2px 5px var(--grey);
+  box-shadow: var(--shadow);
   border-left: 5px solid;
   display: flex;
   flex-direction: column;
@@ -118,7 +126,7 @@ body {
   color: var(--dark-grey);
 } 
 .NoteCard-header {
-  padding: 10px;
+  padding: var(--padding);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,7 +143,7 @@ body {
   background: linear-gradient(to top, var(--white) 0%, var(--light-grey) 100%);
 }
 .NoteCard-body {
-  padding: 10px;
+  padding: var(--padding);
 }
 .NoteCard-footer {
   padding: 5px;
@@ -154,7 +162,7 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .EditModal-content {
-  background-color: var(--light-grey);
+  background-color: var(--white);
   padding: 5vw;
   margin: 15% auto;
   width: 80%;
@@ -173,7 +181,7 @@ body {
   border: 0;
   margin-top: 0;
   font-weight: 900;
-  font-size: large;
+  font-size: x-large;
 }
 
 .EditModal-close:hover {
